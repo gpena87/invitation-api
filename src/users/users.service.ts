@@ -16,7 +16,7 @@ export class UsersService {
     private emailService: EmailService,
   ) {}
 
-   create(dto: CreateUserDto): Observable<{ code: number; message: string }> {
+  create(dto: CreateUserDto): Observable<{ code: number; message: string }> {
     return from(this.userModel.create(dto)).pipe(
       switchMap((user) => this.emailService.sendNotification(user)),
       map(() => {
@@ -34,7 +34,8 @@ export class UsersService {
         });
       }),
       catchError((error) => {
-        const errorMessage = error instanceof Error ? error.message : String(error);
+        const errorMessage =
+          error instanceof Error ? error.message : String(error);
         throw new Error('Error al crear el usuario: ' + errorMessage);
       }),
     );
@@ -53,7 +54,8 @@ export class UsersService {
       this.userModel.findByIdAndUpdate(id, dto, { new: true }).exec(),
     ).pipe(
       catchError((error) => {
-        const errorMessage = error instanceof Error ? error.message : String(error);
+        const errorMessage =
+          error instanceof Error ? error.message : String(error);
         throw new Error('Error al actualizar el usuario: ' + errorMessage);
       }),
     );
