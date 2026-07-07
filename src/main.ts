@@ -7,9 +7,9 @@ async function bootstrap() {
   // Configuración de CORS para permitir llamadas desde frontend en desarrollo y producción
   app.enableCors({
     origin: [
-      'http://localhost:4200',                                   // Desarrollo local Angular
-      'http://localhost:3000',                                   // Desarrollo local otros puertos
-      'https://invitation-web-production-dcfe.up.railway.app',   // Frontend en producción
+      'http://localhost:4200', // Desarrollo local Angular
+      'http://localhost:3000', // Desarrollo local otros puertos
+      'https://invitation-web-production-dcfe.up.railway.app', // Frontend en producción
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
